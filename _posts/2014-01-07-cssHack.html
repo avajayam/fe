@@ -1,0 +1,232 @@
+---
+layout: default
+title: CCS Hack
+---
+<h2>{{ page.title }}</h2>
+
+
+<style>
+body { font-size:14px; font-family:'Microsoft Yahei'; background:#eee}
+.g_table { width:100%; font-size:12px; border:none; border-top:#ccc 1px solid; border-collapse:collapse; border-left:#ccc 1px solid; table-layout:fixed;}
+.g_table th, .g_table td { padding:5px 10px; border-right:#ccc 1px solid; border-bottom:#ccc 1px solid;}
+.g_table th { background:rgba(40,40,40,.6)}
+
+</style>
+
+
+不推荐针对不同浏览器使用各种技巧，这些技巧的存在多半是由于浏览器自身缺陷所致，在新版中会被修正，或被淘汰。<br /><br />
+
+<h2 class="tit">CSS条件注释（CSS Conditional Comments）</h2>
+<pre>
+&lt;!--[if lt IE 7]&gt;
+乌！您正在使用一款过时的浏览器。这个版本的浏览器功能比较简单而且不够安全，请升级您的浏览器!
+&lt;![endif]--&gt;
+</pre>
+<ul>
+	<li>lte - 低于或等于</li>
+	<li>lt - 低于</li>
+	<li>gte - 高于或等于</li>
+	<li>gt - 高于</li>
+	<li>(IE6)|(IE7) - Internet Explorer 6或 Internet Explorer 7</li>
+	<li>(IE6)&(IE7) - Internet Explorer 6 和 Internet Explorer 7</li>
+</ul>
+
+
+<h2 class="tit">CSS Hack</h2>
+
+<style>
+.c { border:#ccc 1px solid; position:relative; zoom:1;}
+.c span { width:30px; height:30px; background:#fff; display:none;}
+
+.right .c { margin:10px 0 0 10px; font-size:18px; line-height:40px; background:#0f0;}
+.right .c a { float:left;}
+.right .c span { display:block;}
+.right .c div { width:60px; height:30px; padding:0 10px; color:#f00; text-align:left; font:50px/40px '黑体'; border:#ff0 2px solid; position:absolute; top:20px; right:5px; overflow:hidden;}
+
+.hack__ .c { _margin:10px 0 0 10px; _font-size:18px; _line-height:40px; _background:#0f0;}
+.hack__ .c a { _float:left;}
+.hack__ .c span { _display:block;}
+.hack__ .c div { _width:60px; _height:30px; _padding:0 10px; _color:#f00; _text-align:left; _font:50px/40px '黑体'; _border:#ff0 2px solid; _position:absolute; _top:20px; _right:5px; _overflow:hidden;}
+
+.hack_star .c { *margin:10px 0 0 10px; *font-size:18px; *line-height:40px; *background:#0f0;}
+.hack_star .c a { *float:left;}
+.hack_star .c span { *display:block;}
+.hack_star .c div { *width:60px; *height:30px; *padding:0 10px; *color:#f00; *text-align:left; *font:50px/40px '黑体'; *border:#ff0 2px solid; *position:absolute; *top:20px; *right:5px; *overflow:hidden;}
+
+.hack_0 .c { margin:10px 0 0 10px\0; font-size:18px\0; line-height:40px\0; background:#0f0\0;}
+.hack_0 .c a { float:left\0;}
+.hack_0 .c span { display:block\0;}
+.hack_0 .c div { width:60px\0; height:30px\0; padding:0 10px\0; color:#f00\0; text-align:left\0; font:50px/40px '黑体'\0; border:#ff0 2px solid\0; position:absolute\0; top:20px\0; right:5px\0; overflow:hidden\0;}
+
+.hack_u0 .c { margin:10px 0 0 10px \0; font-size:18px \0; line-height:40px \0; background:#0f0 \0;}
+.hack_u0 .c a { float:left \0;}
+.hack_u0 .c span { display:block \0;}
+.hack_u0 .c div { width:60px \0; height:30px \0; padding:0 10px \0; color:#f00 \0; text-align:left \0; font:50px/40px '黑体' \0; border:#ff0 2px solid \0; position:absolute \0; top:20px \0; right:5px \0; overflow:hidden \0;}
+
+.hack_9 .c { margin:10px 0 0 10px\9; font-size:18px\9; line-height:40px\9; background:#0f0\9;}
+.hack_9 .c a { float:left\9;}
+.hack_9 .c span { display:block\9;}
+.hack_9 .c div { width:60px\9; height:30px\9; padding:0 10px\9; color:#f00\9; text-align:left\9; font:50px/40px '黑体'\9; border:#ff0 2px solid\9; position:absolute\9; top:20px\9; right:5px\9; overflow:hidden\9;}
+
+.hack_u9 .c { margin:10px 0 0 10px \9; font-size:18px \9; line-height:40px \9; background:#0f0 \9;}
+.hack_u9 .c a { float:left \9;}
+.hack_u9 .c span { display:block \9;}
+.hack_u9 .c div { width:60px \9; height:30px \9; padding:0 10px \9; color:#f00 \9; text-align:left \9; font:50px/40px '黑体' \9; border:#ff0 2px solid \9; position:absolute \9; top:20px \9; right:5px \9; overflow:hidden \9;}
+
+.hack_90 .c { margin:10px 0 0 10px\9\0; font-size:18px\9\0; line-height:40px\9\0; background:#0f0\9\0;}
+.hack_90 .c a { float:left\9\0;}
+.hack_90 .c span { display:block\9\0;}
+.hack_90 .c div { width:60px\9\0; height:30px\9\0; padding:0 10px\9\0; color:#f00\9\0; text-align:left\9\0; font:50px/40px '黑体'\9\0; border:#ff0 2px solid\9\0; position:absolute\9\0; top:20px\9\0; right:5px\9\0; overflow:hidden\9\0;}
+
+.hack_u90 .c { margin:10px 0 0 10px \9\0; font-size:18px \9\0; line-height:40px \9\0; background:#0f0 \9\0;}
+.hack_u90 .c a { float:left \9\0;}
+.hack_u90 .c span { display:block \9\0;}
+.hack_u90 .c div { width:60px \9\0; height:30px \9\0; padding:0 10px \9\0; color:#f00 \9\0; text-align:left \9\0; font:50px/40px '黑体' \9\0; border:#ff0 2px solid \9\0; position:absolute \9\0; top:20px \9\0; right:5px \9\0; overflow:hidden \9\0;}
+
+.hack_0bs .c { margin:10px 0 0 10px\0/; font-size:18px\0/; line-height:40px\0/; background:#0f0\0/;}
+.hack_0bs .c a { float:left\0/;}
+.hack_0bs .c span { display:block\0/;}
+.hack_0bs .c div { width:60px\0/; height:30px\0/; padding:0 10px\0/; color:#f00\0/; text-align:left\0/; font:50px/40px '黑体'\0/; border:#ff0 2px solid\0/; position:absolute\0/; top:20px\0/; right:5px\0/; overflow:hidden\0/;}
+
+.hack_u0bs .c { margin:10px 0 0 10px \0/; font-size:18px \0/; line-height:40px \0/; background:#0f0 \0/;}
+.hack_u0bs .c a { float:left \0/;}
+.hack_u0bs .c span { display:block \0/;}
+.hack_u0bs .c div { width:60px \0/; height:30px \0/; padding:0 10px \0/; color:#f00 \0/; text-align:left \0/; font:50px/40px '黑体' \0/; border:#ff0 2px solid \0/; position:absolute \0/; top:20px \0/; right:5px \0/; overflow:hidden \0/;}
+
+
+</style>
+
+
+<table class="g_table">
+	<tr>
+		<th width="10%" rowspan="2" class="right"><div class="c"><a>aA</a><span></span><div>pP</div></div></th>
+		<th>_</th>
+		<th>*</th>
+		<th>\0</th>
+		<th>空格\0</th>
+		<th>\9</th>
+		<th>空格\9</th>
+		<th>\9\0</th>
+		<th>空格\9\0</th>
+		<th>\0/</th>
+		<th>空格\0/</th>
+	</tr>
+	<tr>
+		<th class="hack__">   <div class="c"><a>aA</a><span></span><div>pP</div></div></th>
+		<th class="hack_star"><div class="c"><a>aA</a><span></span><div>pP</div></div></th>
+		<th class="hack_0">   <div class="c"><a>aA</a><span></span><div>pP</div></div></th>
+		<th class="hack_u0">  <div class="c"><a>aA</a><span></span><div>pP</div></div></th>
+		<th class="hack_9">   <div class="c"><a>aA</a><span></span><div>pP</div></div></th>
+		<th class="hack_u9">  <div class="c"><a>aA</a><span></span><div>pP</div></div></th>
+		<th class="hack_90">  <div class="c"><a>aA</a><span></span><div>pP</div></div></th>
+		<th class="hack_u90"> <div class="c"><a>aA</a><span></span><div>pP</div></div></th>
+		<th class="hack_0bs"> <div class="c"><a>aA</a><span></span><div>pP</div></div></th>
+		<th class="hack_u0bs"><div class="c"><a>aA</a><span></span><div>pP</div></div></th>
+	</tr>
+	<tr>
+		<th>IE6</th>
+		<td>√</td>
+		<td>√</td>
+		<td>(例外：font)</td>
+		<td>(例外：font)</td>
+		<td>√</td>
+		<td>√</td>
+		<td>(例外：font)</td>
+		<td>(例外：font)</td>
+		<td>(例外：font)</td>
+		<td>(例外：font)</td>
+	</tr>
+	<tr>
+		<th>IE7</th>
+		<td></td>
+		<td>√</td>
+		<td>(例外：font)</td>
+		<td>(例外：font)</td>
+		<td>√</td>
+		<td>√</td>
+		<td>(例外：font)</td>
+		<td>(例外：font)</td>
+		<td>(例外：font)</td>
+		<td>(例外：font)</td>
+	</tr>
+	<tr>
+		<th>IE8</th>
+		<td>&nbsp;</td>
+		<td>&nbsp;</td>
+		<td>√</td>
+		<td>√ (例外：float、overflow、display)</td>
+		<td>√</td>
+		<td>√</td>
+		<td>√ (例外：float、overflow、display)</td>
+		<td>√ (例外：border、float、overflow、display)</td>
+		<td>√</td>
+		<td>√ (例外：float、overflow、display)</td>
+	</tr>
+	<tr>
+		<th>IE9</th>
+		<td></td>
+		<td></td>
+		<td>√</td>
+		<td>√ (例外：background、float、overflow、display)</td>
+		<td>√</td>
+		<td>√ (例外：background)</td>
+		<td>√ (例外：float、overflow、display)</td>
+		<td>√ (例外：border、background、float、overflow、display)</td>
+		<td>√ (例外：background)</td>
+		<td>√ (例外：background、float、overflow、display)</td>
+	</tr>
+	<tr>
+		<th>Opera 12.00</th>
+		<td></td>
+		<td></td>
+		<td>√ (例外：width、height、margin、padding、font、font-size、line-height、top、right)</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<th>Safari 5.1.2</th>
+		<td></td>
+		<td></td>
+		<td>(例外：font)</td>
+		<td>(例外：font)</td>
+		<td>(例外：font)</td>
+		<td>(例外：font)</td>
+		<td>(例外：font)</td>
+		<td>(例外：font)</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<th>Chrome 19.0.1084.56 m</th>
+		<td></td>
+		<td></td>
+		<td>(例外：font)</td>
+		<td>(例外：font)</td>
+		<td>(例外：font)</td>
+		<td>(例外：font)</td>
+		<td>(例外：font)</td>
+		<td>(例外：font)</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<tr>
+		<th>Firefox 13.0</th>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+	</tr>
+	
+</table>
+

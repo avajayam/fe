@@ -1,0 +1,142 @@
+---
+layout: default
+title: Auto fixed layout
+---
+<h2>{{ page.title }}</h2>
+
+
+<style id="css" type="text/css">
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Inconsolata'), url(http://themes.googleusercontent.com/static/fonts/inconsolata/v6/BjAYBlHtW3CJxDcjzrnZCIbN6UDyHWBl620a-IRfuBk.woff) format('woff')
+}
+body { margin:0; font-size:12px; line-height:21px; font-family:Inconsolata, serif}
+article,section,p { margin:0; padding:0}
+.wrap { margin-bottom:10px; border:#f90 solid; background:#999}
+input[type='text'] { width:80px}
+.code { width:96%; height:400px; margin:1%; font-size:13px; font-family:Inconsolata, serif}
+</style>
+
+<div class="wrap">
+<div class="mot">
+	<div><div>test</div></div>
+	<span><span>test</span></span>
+	<div></div>
+	<section></section>
+	<article></article>
+	<div></div>
+	<span></span>
+	<section></section>
+	<div></div>
+	<div></div>
+</div>
+</div>
+
+<!-- 
+<ol class="mot">建议用下面的结构
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+	<li></li>
+</ol>
+ -->
+
+</div>
+自动生成一种列表项宽和间距固定、自适应水平居中布局，根据实际情况，为减少代码，默认为最小屏幕宽320px。
+浏览器支持MSIE 9+，其他浏览器较新版。<br />
+列表包裹样式名称：<input type="text" id="mother_string" value="mot"><br />
+外包被占宽度(橘红)：<input type="text" id="wrap_padding" value="10" />px<br />
+列表项宽度（黄）：<input type="text" id="cell_list_width" value="100" />px<br />
+列表项间间距：<input type="text" id="cell_list_padding" value="15" />px<br />
+最大屏幕宽：<input type="text" id="max_width" value="1024" />px<br />
+
+<textarea class="code"></textarea>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function(){
+	
+	var _minW = 320; // 最小屏幕宽
+
+	function output(e){
+		var MS = document.getElementById("mother_string").value,
+		wrap = document.querySelector(".wrap"),
+		wrapP = parseInt(document.getElementById("wrap_padding").value),
+		csW = parseInt(document.getElementById("cell_list_width").value),
+		csP = parseInt(document.getElementById("cell_list_padding").value),
+		_maxW = parseInt(document.getElementById("max_width").value); //计算到的最大屏幕宽
+	
+		M = document.querySelector("."+MS),
+		code = document.querySelector(".code");
+
+		var initN = parseInt((_minW+csP-2*wrapP)/(csW+csP)); //初始一行元素个数
+		
+		var _html = ''
+			_htmltest = '';
+	
+		_htmltest ='.wrap { border-width:'+ wrapP +'px }\n'+ '.'+ MS + ' > :nth-child(n) { width:'+ csW +'px; margin-left:' + csP + 'px }\n'
+			+'\t.'+MS +' { margin:0 auto; padding:0; counter-reset:no; background:#0f0; overflow:hidden}\n'
+			+'\t.'+MS +' > :nth-child(n) { height:50px; margin-bottom:10px; background:#ff0; float:left}'
+			+'\t.'+MS +' > :nth-child(n)::before { content:counter(no); counter-increment:no}';
+		
+		for(var i=0, j=initN; i<=(_maxW -(csW+csP)*initN - wrapP*2 + csP); i+=csW+csP, j++){
+			
+			if(1 == initN){
+				if(1==j){
+					_html += '@media all and (min-width:'+(_minW+i)+'px ){\n'
+						+'\t.'+ MS+' {'+ ' width:'+ csW + 'px }\n'
+						+'\t.'+ MS+' > :nth-child(n){ margin-left:0}\n'			
+					+'}\n'
+				}else if(2 == j){
+					_html += '@media all and (min-width:'+(csW+wrapP*2+i)+'px ){\n'
+						+'\t.'+ MS+' {'+ ' width:'+ (csW + i) + 'px }\n'
+						+'\t.'+ MS+' > :nth-child(n){ margin-left:'+ csP +'px}\n'
+						+'\t.'+ MS+' > :nth-child(2n+1){ margin-left:0}\n'			
+					+'}\n'
+				}else{
+					_html += '@media all and (min-width:'+ (csW+wrapP*2 + i) +'px ){\n'
+						+'\t.'+ MS+' {'+ ' width:'+ (csW + i) + 'px }\n'
+						+'\t.'+ MS+' > :nth-child('+ (j-1) +'n+1){ margin-left:'+ csP +'px}\n'			
+						+'\t.'+ MS+' > :nth-child('+ j +'n+1){ margin-left:0}\n'			
+					+'}\n'
+				}
+			}else {
+				if(initN == j){	
+					_html += '@media all and (min-width:'+(_minW+i)+'px ){\n'
+						+'\t.'+ MS+' {'+ ' width:'+ ((csW+csP)*initN - csP + i) + 'px }\n'
+						+'\t.'+ MS+' > :nth-child('+ j +'n+1){ margin-left:0}\n'			
+					+'}\n'
+				}else{
+					_html += '@media all and (min-width:'+ ((csW+csP)*initN - csP + wrapP*2 + i) +'px ){\n'
+						+'\t.'+ MS+' {'+ ' width:'+ ((csW+csP)*initN - csP + i) + 'px }\n'
+						+'\t.'+ MS+' > :nth-child('+ (j-1) +'n+1){ margin-left:'+ csP +'px}\n'			
+						+'\t.'+ MS+' > :nth-child('+ j +'n+1){ margin-left:0}\n'			
+					+'}\n'
+				}
+			}
+		}
+		code.innerHTML = _html;
+		
+		var css = document.querySelector("#css");
+		css.appendChild(document.createTextNode(_htmltest+_html));
+	}
+	
+	output();
+	
+	document.getElementById("mother_string").addEventListener("change", output, false);
+	document.getElementById("wrap_padding").addEventListener("change", output, false);
+	document.getElementById("cell_list_width").addEventListener("change", output, false);
+	document.getElementById("cell_list_padding").addEventListener("change", output, false);
+	document.getElementById("max_width").addEventListener("change", output, false);
+	
+},false)
+</script>
+

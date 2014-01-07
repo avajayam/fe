@@ -1,0 +1,315 @@
+---
+layout: default
+title: html和css兼容性
+---
+<h2>{{ page.title }}</h2>
+
+
+
+<style>
+body { color:#3D3527; font-size:14px}
+table { width:100%; border:none; border-top:#DAC8A7 1px solid; border-collapse:collapse; border-left:#DAC8A7 1px solid; background:#D3BD98; table-layout:fixed;}
+th.first{width:10em;}
+th, td{padding:5px 10px; border-right:#DAC8A7 1px solid; border-bottom:#DAC8A7 1px solid;}
+th{min-width:3em; color:#fff; background:#C1A574; box-shadow:0 5px 8px rgba(255,255,255,.2) inset;}
+th.ie{background:#233D61}
+th.firefox, th.and_ff{background:#A36223}
+th.chrome, th.and_chr{background:#3F77BB}
+th.safari{background:#666}
+th.opera{background:#812323}
+th.op_mini, th.op_mob{background:#992626}
+th.ios_saf{background:#333}
+th.android{background:#7BA13B}
+th.bb{background:#111}
+</style>
+
+<table>
+	<tr>
+		<th class="first"></th>
+		<th class="ie">IE</th>
+		<th class="firefox">Firefox</th>
+		<th class="and_ff">Firefox for Android</th>
+		<th class="chrome">Chrome</th>
+		<th class="and_chr">Chrome for Android</th>
+		<th class="android">Android Browser</th>
+		<th class="safari">Safari</th>
+		<th class="ios_saf">iOS Safari</th>
+		<th class="opera">Opera</th>
+		<th class="op_mini">Opera Mini</th>
+		<th class="op_mob">Opera Mobile</th>
+		<th class="bb">Blackberry Browser</th>
+	</tr>
+
+	<tr>
+		<th>header, nav, footer, section, article, aside, figure, hgroup, mark, figcaption, </th>
+		<td>9.0+</td>
+		<td>4.0+</td>
+		<td>15.0+</td>
+		<td>6.0+</td>
+		<td>18.0+</td>
+		<td>2.2+</td>
+		<td>5.0+</td>
+		<td>4.0+</td>
+		<td>11.1+</td>
+		<td></td>
+		<td>11.0+</td>
+		<td>7.0+</td>
+	</tr>
+	<tr>
+		<th>video</th>
+		<td>9.0+</td>
+		<td>3.5+</td>
+		<td>15.0+</td>
+		<td>4.0+</td>
+		<td>18.0+</td>
+		<td>2.3+</td>
+		<td>4.0+</td>
+		<td>3.2+</td>
+		<td>10.5+</td>
+		<td></td>
+		<td>11.0+</td>
+		<td>7.0+</td>
+	</tr>
+	<tr>
+		<th>source</th>
+		<td>9.0+</td>
+		<td>3.6+</td>
+		<td>15.0+</td>
+		<td>5.0+</td>
+		<td>18.0+</td>
+		<td></td>
+		<td>5.1+</td>
+		<td>5.0+</td>
+		<td>11.1+</td>
+		<td></td>
+		<td>11.0+</td>
+		<td>7.0+</td>
+	</tr>
+	<tr>
+		<th>canvas</th>
+		<td>9.0+</td>
+		<td>2.0+</td>
+		<td>15.0+</td>
+		<td>4.0+</td>
+		<td>18.0+</td>
+		<td>2.1+</td>
+		<td>3.1+</td>
+		<td>3.2+</td>
+		<td>9.0+</td>
+		<td></td>
+		<td>10.0+</td>
+		<td>7.0+</td>
+	</tr>
+	<tr>
+		<th>summary</th>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>12.0+</td>
+		<td>18.0+</td>
+		<td>4.0+</td>
+		<td>6.0+</td>
+		<td>6.0+</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>10.0+</td>
+	</tr>
+	<tr>
+		<th>time</th>
+		<td>9.0+</td>
+		<td>4.0+</td>
+		<td>15.0+</td>
+		<td>6.0+</td>
+		<td>18.0+</td>
+		<td>2.2+</td>
+		<td>5.0+</td>
+		<td>4.0+</td>
+		<td>11.1+</td>
+		<td></td>
+		<td>11.0+</td>
+		<td>7.0+</td>
+	</tr>
+	<tr>
+		<th>datalist</th>
+		<td>10.0+</td>
+		<td>4.0+</td>
+		<td>15.0+</td>
+		<td>20.0+</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>9.0+</td>
+		<td></td>
+		<td>10.0+</td>
+		<td></td>
+	</tr>
+	<tr>
+		<th>details</th>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>12.0+</td>
+		<td>18.0+</td>
+		<td>4.0+</td>
+		<td>6.0+</td>
+		<td>6.0+</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td>10.0+</td>
+	</tr>
+	<tr>
+		<th>embed</th>
+		<td></td>
+		<td>2.0+</td>
+		<td>15.0+</td>
+		<td>4.0+</td>
+		<td>18.0+</td>
+		<td>2.1+</td>
+		<td>3.1+</td>
+		<td>3.2+</td>
+		<td>9.0+</td>
+		<td>5.0+</td>
+		<td>10.0+</td>
+		<td>7.0+</td>
+	</tr>
+	<tr>
+		<th>&gt;, +, [attr], :first-child, last-child</th>
+		<td>7.0+</td>
+		<td>2.0+</td>
+		<td>15.0+</td>
+		<td>4.0+</td>
+		<td>18.0+</td>
+		<td>2.1+</td>
+		<td>3.1+</td>
+		<td>3.2+</td>
+		<td>9.0+</td>
+		<td>5.0+</td>
+		<td>10.0+</td>
+		<td>7.0+</td>
+	</tr>
+	<tr>
+		<th>nth-child</th>
+		<td>9.0+</td>
+		<td>3.5+</td>
+		<td>15.0+</td>
+		<td>4.0+</td>
+		<td>18.0+</td>
+		<td>2.1+</td>
+		<td>3.2+</td>
+		<td>3.2+</td>
+		<td>9.5+</td>
+		<td>5.0+</td>
+		<td>10.0+</td>
+		<td>7.0+</td>
+	</tr>
+	<tr>
+		<th>:before, :after</th>
+		<td>8.0+</td>
+		<td>2.0+</td>
+		<td>15.0+</td>
+		<td>4.0+</td>
+		<td>18.0+</td>
+		<td>2.1+</td>
+		<td>3.1+</td>
+		<td>3.2+</td>
+		<td>9.0+</td>
+		<td>5.0+</td>
+		<td>10.0+</td>
+		<td>7.0+</td>
+	</tr>
+	<tr>
+		<th>linear, radial gradient</th>
+		<td>10.0+</td>
+		<td>3.6+   &nbsp; <sup>-moz-</sup><br />16.0+</td>
+		<td>15.0+   &nbsp; <sup>-moz-</sup></td>
+		<td>10.0+ &nbsp;<sup>-webkit-</sup></td>
+		<td>18.0+ &nbsp;<sup>-webkit-</sup></td>
+		<td>2.1+   &nbsp; <sup>-webkit-</sup></td>
+		<td>5.1+   &nbsp; <sup>-webkit-</sup></td>
+		<td>5.0+   &nbsp; <sup>-webkit-</sup></td>
+		<td>11.6+   &nbsp; <sup>-o-</sup><br />12.1</td>
+		<td>12.0+   &nbsp; <sup>-o-</sup></td>
+		<td></td>
+		<td>10.0+ &nbsp;<sup>-webkit-</sup></td>
+	</tr>
+	<tr>
+		<th>box-shadow</th>
+		<td>9.0+</td>
+		<td>3.5+   &nbsp; <sup>-moz-</sup><br />4.0+</td>
+		<td>15.0+</td>
+		<td>4.0+ &nbsp; <sup>-webkit-</sup><br />10.0+</td>
+		<td>18.0+</td>
+		<td>2.1+   &nbsp; <sup>-webkit-</sup><br />4.0+</td>
+		<td>5.0+   &nbsp; <sup>-webkit-</sup><br />5.1+</td>
+		<td>4.0+   &nbsp; <sup>-webkit-</sup><br />5.0+</td>
+		<td>10.5+</td>
+		<td></td>
+		<td>11.0+</td>
+		<td>7.0+ &nbsp;<sup>-webkit-</sup><br />10.0+</td>
+	</tr>
+	<tr>
+		<th>border-radius</th>
+		<td>9.0+</td>
+		<td>3.0+   &nbsp; <sup>-moz-</sup><br />4.0+</td>
+		<td>15.0+</td>
+		<td>4.0+ &nbsp; <sup>-webkit-</sup><br />5.0+</td>
+		<td>18.0+</td>
+		<td>2.1+   &nbsp; <sup>-webkit-</sup><br />2.2+</td>
+		<td>3.1+   &nbsp; <sup>-webkit-</sup><br />5.0+</td>
+		<td>3.2+   &nbsp; <sup>-webkit-</sup><br />4.0+</td>
+		<td>10.5+</td>
+		<td></td>
+		<td>11.0+</td>
+		<td>7.0+</td>
+	</tr>
+	<tr>
+		<th>transform</th>
+		<td>9.0+   &nbsp; <sup>-ms-</sup><br />10.0+</td>
+		<td>3.5+   &nbsp; <sup>-moz-</sup><br />16.0+</td>
+		<td>15.0+   &nbsp; <sup>-moz-</sup></td>
+		<td>4.0+   &nbsp; <sup>-webkit-</sup></td>
+		<td>18.0+ &nbsp;<sup>-webkit-</sup></td>
+		<td>2.1+   &nbsp; <sup>-webkit-</sup></td>
+		<td>3.1+   &nbsp; <sup>-webkit-</sup></td>
+		<td>3.2+   &nbsp; <sup>-webkit-</sup></td>
+		<td>10.5+   &nbsp; <sup>-o-</sup><br />12.1+</td>
+		<td>11.0+</td>
+		<td></td>
+		<td>7.0+   &nbsp; <sup>-webkit-</sup></td>
+	</tr>
+	<tr>
+		<th>transition</th>
+		<td>10.0+</td>
+		<td>4.0+   &nbsp; <sup>-moz-</sup><br />16.0+</td>
+		<td>15.0+   &nbsp; <sup>-moz-</sup></td>
+		<td>4.0+   &nbsp; <sup>-webkit-</sup></td>
+		<td>18.0+ &nbsp;<sup>-webkit-</sup></td>
+		<td>2.1+   &nbsp; <sup>-webkit-</sup></td>
+		<td>3.1+   &nbsp; <sup>-webkit-</sup></td>
+		<td>3.2+   &nbsp; <sup>-webkit-</sup></td>
+		<td>10.5+   &nbsp; <sup>-o-</sup><br />12.1+</td>
+		<td>10.0+</td>
+		<td></td>
+		<td>7.0+   &nbsp; <sup>-webkit-</sup></td>
+	</tr>
+	<tr>
+		<th>animation</th>
+		<td>10.0+</td>
+		<td>5.0+   &nbsp; <sup>-moz-</sup><br />16.0+</td>
+		<td>15.0+   &nbsp; <sup>-moz-</sup></td>
+		<td>4.0+   &nbsp; <sup>-webkit-</sup></td>
+		<td>18.0+ &nbsp;<sup>-webkit-</sup></td>
+		<td>4.0+   &nbsp; <sup>-webkit-</sup></td>
+		<td>2.1+bug<br />4.0+   &nbsp; <sup>-webkit-</sup></td>
+		<td>3.2+   &nbsp; <sup>-webkit-</sup></td>
+		<td>12.0+   &nbsp; <sup>-o-</sup><br />12.1+</td>
+		<td></td>
+		<td></td>
+		<td>7.0+   &nbsp; <sup>-webkit-</sup></td>
+	</tr>
+	
+		
+</table>

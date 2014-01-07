@@ -1,0 +1,130 @@
+/*
+------------------------normalize & reset
+*/
+
+body,header,nav,dl,dt,dd,p,h1,h2,h3,h4,ul,ol,li,input,button,textarea,footer { margin:0; padding:0}
+/* 集中清零浏览器默认设置的margin，padding，防止漏写 */
+
+ul { list-style:none}
+/* 通常不需要列表符号，建议预先清除 */
+
+img,input,button,select{ margin-top:-.14em; vertical-align:middle}
+/* 预先设置垂直居中，margin-top修正 */
+
+img { border:0}
+/* 去除ie下被a包含时边线问题，用none累赘且兼容性差些 */
+
+input:focus::-moz-placeholder { color:transparent} 
+input:focus::-webkit-input-placeholder { color:transparent}
+/* 解决placeholder focus时不消失问题 */
+
+button::-moz-focus-inner,input::-moz-focus-inner { padding:0; border:0}
+/* 清除Firfox4+内部padding和border */
+
+textarea { resize:vertical}
+/* 根据实际情况，高也限制的话用none */
+
+table { border-collapse:collapse; border-spacing:0}
+/*
+设置表格样式
+可选
+[colspan]{ text-align:center}
+[colspan="1"]{ text-align:left}
+[rowspan]{ vertical-align:middle}
+[rowspan="1"]{ vertical-align:top}
+ */
+
+input{ -webkit-user-modify:read-write-plaintext-only; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+/* Android 4.0.0~4.0.4 remove input focus highlight */
+
+
+
+
+/*
+------------------------base
+*/
+
+html { min-width:320px; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; position:relative}
+/* 
+min-width        保证小屏幕出滚动条，根据实际需要结合viewport(width=device-width)设置，建议320；
+text-size-adjust 禁止浏览器自动调整字体大小(iOS旋转屏幕时)，建议100%，none有个缺点是禁止缩放，对于Chrome的小于12px小字体问题，可以在父级用none；
+position         方便子元素绝对定位到整个页面区，建议设置。
+
+可选
+height:100%      获取viewport高
+-webkit-tap-highlight-color:rgba(0,0,0,0)，WP8中的IE10用 <meta name="msapplication-tap-highlight" content="no"/>
+*/
+
+html,button,input,select { font:16px/1.37em "Microsoft Yahei","Lucida Grande",Helvetica,Arial}
+/*
+font  根据UI设置，按目前主流手机device-width，16px字体比较适合阅读, line-height选1.375倍，字体选微软（Microsoft YaHei、Arial）和Apple（Lucida Granda、Helvetica）两大阵营的代表，Google指定字体是Arial; 设置在html上方便rem单位
+*/
+
+body {}
+/*
+min-height:100%   
+position:relative 如果要随内容高变化, 多用于设置遮罩弹层
+*/
+
+
+/*
+------------------------utilities
+*/
+
+.clearer { height:0; line-height:0; font-size:0; clear:both; display:block}
+.selfclear { zoom:1} 
+.selfclear:after { content:''; clear:both; display:block}
+/* 清除浮动：附加及自我清除。overflow:hidden，或者 width:100%; float:left; clear:both. zoom针对IE7 */
+
+.ellipsis { white-space:nowrap; text-overflow:ellipsis; overflow:hidden} 
+/* 单行截字，带... */
+
+.break { word-break:break-all; word-wrap:break-word} 
+/* 断字 */
+
+.s14 { font-size:14px}
+/* font-size*/
+
+.c_r { color:#f30}
+/* color */
+
+.w200 { width:200px}
+/* width 200 */
+
+
+
+
+/*
+------------------------debug
+*/
+
+:empty{ outline:5px solid yellow}
+
+a[href*="javascript"]{ outline:5px solid yellow}
+
+
+
+
+
+/*
+------------------------code
+*/
+
+.bg {
+	background:#0f0;
+	background:-webkit-gradient(linear, 0 0, 0 100%, from(#fff), to(#0f0));
+	background:linear-gradient(#fff, #0f0)
+}
+/* 
+PC:      Firefox 16+、Chrome 26+ 、MSIE 10+、Safari 4+、Opera 12.1
+Mobile:  Android 2.1+、Chrome 28、iOS 3.2+、Opera Mobile 12.1+
+不支持均退化成纯色
+*/
+
+
+
+
+
+
+
+

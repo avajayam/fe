@@ -1,0 +1,32 @@
+---
+layout: default
+title: detect
+---
+<h2>{{ page.title }}</h2>
+
+window.innerWidth: <span id="w"></span><br />
+window.devicePixelRatio ---- -webkit-device-pixel-ratio: <span id="r"></span> <br />
+window.device ppi: <span id="d"></span>
+
+<script>
+window.onload=function(){
+	document.getElementById("w").innerHTML = window.innerWidth + "px";
+	document.getElementById("r").innerHTML = window.devicePixelRatio;
+	document.getElementById("d").innerHTML = getPPI() + "ppi";
+	
+	function getPPI(){
+		 var div = document.createElement("div");
+		 div.style.width="1in";
+		 var body = document.getElementsByTagName("body")[0];
+		 body.appendChild(div);
+		 var ppi = document.defaultView.getComputedStyle(div, null).getPropertyValue('width');
+		 body.removeChild(div);
+		 return parseFloat(ppi);
+	}
+	
+	
+}
+
+</script>
+
+

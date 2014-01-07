@@ -1,0 +1,81 @@
+---
+layout: default
+title: 一些处理方式的内存性能对比
+---
+<h2>{{ page.title }}</h2>
+
+
+<style type="text/css">
+body { font-size:12px; line-height:21px; color:#ccc; font-family:Verdana; background:#555;}
+table { width:99%; border-collapse:collapse; border:#777 1px solid;}
+th { padding:10px; text-align:left; border:#777 1px solid; background:#333;}
+td { padding:10px; border:#777 1px solid;}
+.c_orange { color:#F90;}
+</style>
+
+
+
+<table>
+	<caption>做两个div，一个div放了张32M本地大尺寸图片，一个div放纯背景空内容，都采用全屏方式。</caption>
+	<tr>
+		<th width="12%"></th>
+		<th width="22%">Firefox V9.0.1</th>
+		<th width="22%">Chrome V17.0.963.56 m</th>
+		<th width="22%">MSIE V9.0.8112.</th>
+		<th width="22%">Safari V5.1.2</th>
+	
+	</tr>
+
+	<tr>
+		<th>display:none</th>
+		<td>57.7(空加载) - 161.1(加载大图) - 140.6(none)<br /><span class="c_orange">内存减少</span></td>
+		<td>12.3，19.9 - 83.9，22.7 - 82.0，20.6<br /></td>
+		<td>5.1，7.0 - 5.7，4.4，36.6 - 5.7，4.3，36.1<br /></td>
+		<td>13.0 - 18.8～14.5 - 14.5<br /></td>
+	</tr>
+	
+	<tr>
+		<th>overflow:hidden</th>
+		<td>58.0(空加载) - 153.1(加载大图) - 136.7(hidden)<br /><span class="c_orange">内存减少</span></td>
+		<td>12.3，19.9 - 82.7，20.5 - 82.8，20.4<br /></td>
+		<td>5.3，6.1 - 5.7，4.3，27.9 - 5.7,4.3,27.9<br /></td>
+		<td>13.1 - 18.9～14.4 - 14.4<br /></td>
+	</tr>
+
+	<tr>
+		<th>z-index切换</th>
+		<td>57.6(空加载) - 148.5(加载大图) - 131.9(z - index切换)<br /><span class="c_orange">内存减少</span></td>
+		<td>12.0，19.8 - 83.6，20.4 - 77.8，21.5<br /></td>
+		<td>5.6，5.4 - 4.1，39.8，5.8 - 39.8，5.6<br /></td>
+		<td>13.3 - 18.9～14.4 - 14.6<br /></td>
+	</tr>
+
+	<tr>
+		<th>innerHTML<br />清空DOM结构</th>
+		<td>62.2(空加载) - 163.7(加载大图) - 76.2(空)<br /><span class="c_orange">内存减少显著</span><br />立即操作和过段时间操作效果不一样，大致是148减为136，估计涉及系统及ff回收机制。</td>
+		<td>19.7，12.0 - 20.2，81.6 - 20.2，81.6<br />如果新开窗口操作，内存明显减少</td>
+		<td>4.9，5.8 - 5.9，31.3，4.4 - 5.9，31.3，4.4<br />如果新开窗口操作，也不明显触发回收</td>
+		<td>13.0 - 18.8～14.4 - 14.4<br />如果新开窗口操作，也不明显触发回收</td>
+	</tr>
+
+	<tr>
+		<th>关闭当前窗口</th>
+		<td>57.2(空加载) - 158.9(加载大图) - 71.3(关闭窗口)<br /><span class="c_orange">内存减少显著</span></td>
+		<td>19.9，12.6 - 20.4，83.8 - 21.1，8.8<br /><span class="c_orange">内存减少显著</span></td>
+		<td>6.2，5.2 - 32.0，4.4，5.8 - 6.0，6.0<br /><span class="c_orange">内存减少显著</span></td>
+		<td>13.0 - 18.9～14.5 - 15.1<br /></td>
+	</tr>
+	
+	<tr>
+		<td></td>
+		<td>Firefox关闭窗口最优，初始耗内存大，在各操作后内存回收都有反映</td>
+		<td>Chrome关闭窗口最优，新开窗口，innerHTML内存回收显著，其他一样</td>
+		<td>MSIE关闭窗口最优，其他一样</td>
+		<td>Safari，当前窗口失去焦点时，自动回收部分内存，但在关闭窗口后并不及时回收，会不会和系统有关</td>
+	
+	</tr>
+
+</table>
+
+</body>
+</html>

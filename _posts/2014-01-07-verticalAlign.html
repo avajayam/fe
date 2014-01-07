@@ -1,0 +1,117 @@
+---
+layout: default
+title: Vertical Align
+---
+<h2>{{ page.title }}</h2>
+
+
+
+<style>
+body { min-width:900px; font-family: "Helvetica Neue", serif;}
+.t { height:200px; margin-top:10px; font-size:100px; line-height:200px; background:#aaa; position:relative}
+.l, .l2, .l3, .l4 { width:100%; height:100%; position:absolute; top:0; left:0}
+.l::before { width:70%; height:1px; content:''; background:#f0f; vertical-align:baseline; display:inline-block}
+.l2::before { width:70%; height:1px; content:''; background:#ff0; vertical-align:middle; display:inline-block}
+.l3::before { width:70%; height:1px; content:''; background:#0ff; vertical-align:text-top; display:inline-block}
+.l4::before { width:70%; height:1px; content:''; background:#0ff; vertical-align:text-bottom; display:inline-block}
+span { background:#0f0; position:relative}
+.t > span::before, .t::before { width:100%; height:1px; font-size:1em; content:''; background:#fff; position:absolute; top:50%}
+img { border:0; vertical-align:middle}
+input, select { vertical-align:middle}
+img + img, input + input, select + select { margin-top:-.14em}
+
+.f_wp { font-family:'方正等线'; font-weight:bold}
+.f_android { font-family:'Droid Sans Fallback'}
+.f_ios { font-family:'Hei'}
+
+.o .t { background:none}
+.o ::before { display:none !important}
+.o span { background:none}
+.o .l4 span { display:none}
+
+.s { height:50px; line-height:50px; font-size:12px}
+.s img { width:12px; height:12px}
+</style>
+
+青色线text-top，text-bottom，紫色线baseline，黄色线middle，白线模拟视觉垂直中分线，一组两个，前一个为未加margin-top偏移。<br />
+img,input,select等和文本的垂直居中设置可以写成：<br />
+margin-top:-.14em; border:0; vertical-align:middle-----(根据实际字体情况，建议再微调.14值，也可用maring-bottom)
+
+<div class="t f_wp">
+	<span>aAopPyZ|字</span><img src="http://r3.sinaimg.cn/10170/2013/0530/61/9/02426293/768x923x75x0.jpg" height="20"><img src="http://r3.sinaimg.cn/10170/2013/0530/61/9/02426293/768x923x75x0.jpg" height="20">
+	<div class="l"></div>
+	<div class="l2"></div>
+	<div class="l3"></div>
+	<div class="l4"><span>WP</span></div>
+</div>
+<div class="t f_android">
+	<span>aAopPyZ|字</span><img src="http://r3.sinaimg.cn/10170/2013/0530/61/9/02426293/768x923x75x0.jpg" height="50"><img src="http://r3.sinaimg.cn/10170/2013/0530/61/9/02426293/768x923x75x0.jpg" height="50">
+	<div class="l"></div>
+	<div class="l2"></div>
+	<div class="l3"></div>
+	<div class="l4"><span>Andr</span></div>
+</div>
+<div class="t f_ios">
+	<span>aAop5PyZ|画</span><img src="http://r3.sinaimg.cn/10170/2013/0530/61/9/02426293/768x923x75x0.jpg" height="50"><img src="http://r3.sinaimg.cn/10170/2013/0530/61/9/02426293/768x923x75x0.jpg" height="50">
+	<div class="l"></div>
+	<div class="l2"></div>
+	<div class="l3"></div>
+	<div class="l4"><span>iOS</span></div>
+</div>
+
+<!--  字=图 -->
+<div class="t f_wp s">
+	<span>aAopPyZ|字国</span><img src="http://r3.sinaimg.cn/10170/2013/0530/61/9/02426293/768x923x75x0.jpg" height="50"><img src="http://r3.sinaimg.cn/10170/2013/0530/61/9/02426293/768x923x75x0.jpg" height="50">国
+	<div class="l"></div>
+	<div class="l2"></div>
+	<div class="l3"></div>
+	<div class="l4"><span>WP</span></div>
+</div>
+<div class="t f_android s">
+	<span>aAopPyZ|字国</span><img src="http://r3.sinaimg.cn/10170/2013/0530/61/9/02426293/768x923x75x0.jpg" height="50"><img src="http://r3.sinaimg.cn/10170/2013/0530/61/9/02426293/768x923x75x0.jpg" height="50">国
+	<div class="l"></div>
+	<div class="l2"></div>
+	<div class="l3"></div>
+	<div class="l4"><span>Andr</span></div>
+</div>
+<div class="t f_ios s">
+	<span>aAopPyZ|字国</span><img src="http://r3.sinaimg.cn/10170/2013/0530/61/9/02426293/768x923x75x0.jpg" height="50"><img src="http://r3.sinaimg.cn/10170/2013/0530/61/9/02426293/768x923x75x0.jpg" height="50">国
+	<div class="l"></div>
+	<div class="l2"></div>
+	<div class="l3"></div>
+	<div class="l4"><span>iOS</span></div>
+</div>
+
+
+<!--  字大图小 -->
+<div class="t f_wp" style="font-size:20px">
+	<span>aAopPyZ|字</span><img src="http://r3.sinaimg.cn/10170/2013/0530/61/9/02426293/768x923x75x0.jpg" height="50"><img src="http://r3.sinaimg.cn/10170/2013/0530/61/9/02426293/768x923x75x0.jpg" height="50">
+	<div class="l"></div>
+	<div class="l2"></div>
+	<div class="l3"></div>
+	<div class="l4"><span>WP</span></div>
+</div>
+<div class="t f_android" style="font-size:20px">
+	<span>aAopPyZ|字</span><img src="http://r3.sinaimg.cn/10170/2013/0530/61/9/02426293/768x923x75x0.jpg" height="50"><img src="http://r3.sinaimg.cn/10170/2013/0530/61/9/02426293/768x923x75x0.jpg" height="50">
+	<div class="l"></div>
+	<div class="l2"></div>
+	<div class="l3"></div>
+	<div class="l4"><span>Andr</span></div>
+</div>
+<div class="t f_ios" style="font-size:20px">
+	<span>aAopPyZ|字</span><img src="http://r3.sinaimg.cn/10170/2013/0530/61/9/02426293/768x923x75x0.jpg" height="50"><img src="http://r3.sinaimg.cn/10170/2013/0530/61/9/02426293/768x923x75x0.jpg" height="50">
+	<div class="l"></div>
+	<div class="l2"></div>
+	<div class="l3"></div>
+	<div class="l4"><span>iOS</span></div>
+</div>
+
+
+<script>
+	window.addEventListener('click', function(){
+		document.querySelector('body').className = document.querySelector('body').className=="o" ? '': 'o'	
+	})
+	//alert(window.getComputedStyle(document.querySelector('.t > span'), '::before').getPropertyValue(''));
+</script>
+
+

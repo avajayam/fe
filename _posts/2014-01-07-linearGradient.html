@@ -1,0 +1,178 @@
+---
+layout: default
+title: -webkit-gradient linear VS -webkit-linear-gradient
+---
+<h2>{{ page.title }}</h2>
+
+
+
+<style>
+body { font-size:12px; font-family:"Microsoft Yahei";}
+.c { padding-bottom:20px; zoom:1}
+.c:after { content:''; clear:both; display:block}
+.c div { width:300px; height:200px; margin:10px 10px 0 0; float:left}
+.c div:nth-child(1){ background:-webkit-gradient(linear,0 0,50% 100%, color-stop(49%, #f00), color-stop(50%, #0f0))}
+.c div:nth-child(1):before { content:attr(dtxt)}
+.c div:nth-child(2){ background:-webkit-linear-gradient(-53.13deg, #f00 36.029%, #0f0 36.765%)}
+.c div:nth-child(2):before { content:attr(dtxt)}
+
+.g_wri { margin-bottom:20px; display:-webkit-flex; display:flex; -webkit-flex-wrap:wrap; flex-wrap:wrap}
+.g_wri div { min-width:300px; -webkit-box-flex:1}
+input[type="text"]{ width:100px; margin-right:10px; padding:2px}
+.txt { font-weight:bold; color:#060; font-size:14px}
+
+.t { margin-top:20px; padding-top:10px; border-top:#ccc dashed 1px}
+.t img { max-width:100%}
+
+.c_ div:nth-child(1){ height:200px; margin-bottom:20px; background:-webkit-gradient(linear,0 0,50% 100%, color-stop(49%, #f00), color-stop(50%, #0f0))}
+.c_ div:nth-child(2){ height:200px; background:-webkit-linear-gradient(-45deg, #f00 49%, #0f0 50%)}
+
+
+</style>
+
+
+
+<div class="c">
+	<div id="theBox1" dtxt="webkit-gradient"></div>
+	<div id="theBox2" dtxt="webkit-linear-gradient"></div>
+</div>
+
+<div class="g_wri">
+	<div>输入宽：<input type="text" id="boxW" placeholder="输入宽" value="300" /></div>
+	<div>输入高：<input type="text" id="boxH" placeholder="输入高" value="200" /></div>
+	<div>输入第一color-stop <input type="text" id="stopP1" placeholder="输入第一color-stop" value="49" /></div>
+	<div>输入第二color-stop <input type="text" id="stopP2" placeholder="输入第二color-stop" value="50" /></div>
+	<div>输入结束点<select id="seletEndP"><option value="x">x轴</option><option value="y">y轴</option></select>偏移：<input type="text" id="endP" placeholder="输入偏移值" value="50" /></div>
+</div>
+
+
+旋转角度 α- 90 ℃ : <span id="rDeg" class="txt"></span><br />
+渐变偏移 h1：<span id="cStop1" class="txt"></span><br />
+渐变偏移 h2：<span id="cStop2" class="txt"></span>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+	var Box1 = document.getElementById("theBox1");
+	var Box2 = document.getElementById("theBox2");
+	var boxW = document.getElementById("boxW");
+	var boxH = document.getElementById("boxH");
+	var stopP1 = document.getElementById("stopP1");
+	var stopP2 = document.getElementById("stopP2");
+	var endP = document.getElementById("endP");
+	var rDeg = document.getElementById("rDeg");
+	var cStop1 = document.getElementById("cStop1");
+	var cStop2 = document.getElementById("cStop2");
+	var seletEndP = document.getElementById("seletEndP");
+	var endPFlag = true;
+
+	var W, H, h, v, α, β, D1, D2, d, h2, stopcP1, stopcP2, str1, str2; 
+	caculate();
+	
+	seletEndP.addEventListener("change", seletEndPHandle, false);
+	boxW.addEventListener("change", caculate, false);
+	boxH.addEventListener("change", caculate, false);
+	stopP1.addEventListener("change", caculate, false);
+	stopP2.addEventListener("change", caculate, false);
+	endP.addEventListener("change", caculate, false);
+	
+	function seletEndPHandle(e){
+		if( seletEndP.options[seletEndP.selectedIndex].value != "x"){
+			endPFlag = false;
+		}else{
+			endPFlag = true;
+		}
+		caculate();
+	}
+	
+	function caculate(){
+				
+		W = boxW.value;
+		H = boxH.value;
+		stopcP1 = stopP1.value; 
+		stopcP2 = stopP2.value;
+		
+		if( !endPFlag){
+			caculateY();
+		}else {
+			caculateX();
+		}
+		
+		Box1.style.backgroundImage = str1;
+		Box2.style.backgroundImage = str2;
+		Box1.setAttribute("dtxt", str1 );
+		Box2.setAttribute("dtxt", str2 );
+	}
+	
+	function caculateX(e){
+				
+		h = endP.value;
+		α = Math.atan(((W*h)/100)/H);
+		β = Math.atan(W/H);
+		D1 = Math.sqrt((W*h/100)*(W*h/100)+H*H);
+		
+		if(h>=0){		
+			D2 = Math.sqrt( W*W+H*H )* Math.cos(β-α);
+			d = (D2 - D1)*stopcP2/100;
+			h2 = d*100/D2;
+		}else {
+			D2 = Math.sqrt( W*W+H*H )* Math.cos(β+α);
+			d =  (D1- D2)*stopcP2/100 + W*Math.sin(-α);
+			h2 = -d*100/D2;
+		}
+		
+		h1 = h2*stopcP1/stopcP2;
+		rDeg.innerHTML = α*180/Math.PI - 90;
+		cStop1.innerHTML = h1;
+		cStop2.innerHTML = h2;
+		Box1.style.width = Box2.style.width = W + "px";
+		Box1.style.height = Box2.style.height = H + "px";
+		str1 = "-webkit-gradient(linear,0 0,"+ h +"% 100%, color-stop("+ stopcP1 +"%, #f00), color-stop("+ stopcP2 +"%, #0f0))";
+		str2 = "-webkit-linear-gradient("+ (α*180/Math.PI - 90) +"deg, #f00 "+ (stopcP1-h1) +"%, #0f0 "+ (stopcP2-h2) +"%)";
+		
+	}
+	function caculateY(e){
+		
+		v = endP.value;
+		α = Math.atan(((H*v)/100)/W);
+		β = Math.atan(H/W);
+
+		if(v>=0){
+			D1 = Math.sqrt((H*v/100)*(H*v/100)+W*W);
+			D2 = Math.sqrt( W*W+H*H )* Math.cos(β-α);
+			d = (D2 - D1)*stopcP2/100 ;
+			h2 = d*100/D2;
+		}else {
+			D1 = W/Math.cos(-α);
+			D2 = Math.sqrt( W*W+H*H )* Math.cos(β+α);
+			d = (D1 - D2)*stopcP2/100 + H*Math.sin(-α); 
+			h2 = -d*100/D2;	
+		}
+
+		h1 = h2*stopcP1/stopcP2;
+		rDeg.innerHTML = -α*180/Math.PI;
+		cStop1.innerHTML = h1;		
+		cStop2.innerHTML = h2;		
+		Box1.style.width = Box2.style.width = W + "px";
+		Box1.style.height = Box2.style.height = H + "px";
+		str1 = "-webkit-gradient(linear,0 0, 100% "+ v +"%, color-stop("+ stopcP1 +"%, #f00), color-stop("+ stopcP2 +"%, #0f0))";
+		str2 = "-webkit-linear-gradient("+ -(α*180/Math.PI) +"deg, #f00 "+ (stopcP1-h2) +"%, #0f0 "+ (stopcP2-h2) +"%)";
+	}	
+	
+	
+}, false)
+</script>
+
+
+<div class="t">
+	webkit线性渐变webkit-gradient linear写法到webkit-linear-gradient转换，本文只实现webkit-gradient的起始点固定0 0，结束点单轴偏移的转换，多stop可以类推出来，负值情况稍变化下，x轴分析见下图(y轴同理)，
+	<img src="../img/gradientX.png" />
+</div>
+
+下面限高不限width，能看出两种写法差异，webkit-graident因为根据两点计算角度，所以角度会改变
+<div class="c_">
+	<div></div>
+	<div></div>
+</div>
+
+
+

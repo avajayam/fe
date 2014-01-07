@@ -1,0 +1,61 @@
+---
+layout: default
+title: 快速编码
+---
+<h2>{{ page.title }}</h2>
+
+
+<style>
+html { font-size:14px}
+body { counter-reset:no; color:#ccc; background:#555; font-family:"Microsoft Yahei", Arial}
+a[name] { margin:30px 0 5px; font-size:16px; font-weight:bold; display:block}
+body a[name]::before { content:counter(no) '. '; counter-increment:no}
+</style>
+
+
+
+<a name="imgshow">图片效果</a>
+<style>
+.img_wrap { width:200px; height:200px; background:url(http://1821.img.pp.sohu.com.cn/images/blog/2009/1/17/16/3/11f8cf85bb6g214.jpg) no-repeat; background-size:cover; position:relative; display:inline-block}
+	
+.img_wrap.glossyreflection { -webkit-border-radius:20px; border-radius:20px;
+	-webkit-box-shadow:inset 0 -1px 0 rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.6);
+	box-shadow:inset 0 -1px 0 rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.6)
+}
+.img_wrap.glossyreflection:before { width:100%; height:50%; content:''; position:absolute; top:0; left:0; 
+	-webkit-border-radius: 20px; border-radius: 20px;
+	background:-webkit-gradient(linear, 0 0, 0 100%, from(rgba(255,255,255,.7)), to(rgba(255,255,255,.1)));
+	background:linear-gradient(rgba(255,255,255,.7),rgba(255,255,255,.1))
+}
+.img_wrap.glossyreflection:after { width:100%; height:30px; content:''; position:absolute; bottom:-31px; left:0;
+	-webkit-border-top-left-radius:20px; -webkit-border-top-right-radius:20px;
+	border-top-left-radius:20px; border-top-right-radius:20px;
+	background:-webkit-gradient(linear, 0 0, 0 100%, from(rgba(230,230,230,.3)), to(rgba(230,230,230,0)));
+	background:linear-gradient(rgba(230,230,230,.3),rgba(230,230,230,0))
+}
+
+.img_wrap.feather { -webkit-border-radius:30rem; border-radius:30rem}
+.img_wrap.feather:after  { width:100%; height:100%; content:''; position: absolute; top:0; left:0;
+	background:-webkit-gradient(radial, 50% 50%, 70, 50% 50%, 100, from(rgba(85,85,85,0)), to(#555));
+	background:-moz-radial-gradient(50% 50%, circle, rgba(85,85,85,0) 70px, #555 100px);
+	background:radial-gradient(50% 50%, circle, rgba(85,85,85,0) 70px, #555 100px);
+}
+	
+</style>
+<span class="img_wrap"></span>
+<span class="img_wrap glossyreflection" ></span>
+<span class="img_wrap feather"></span>
+
+
+<a name="simulatelegend">legend模拟</a>
+<style>
+.legend_tit { white-space:nowrap; overflow:hidden}
+.legend_tit:before, .legend_tit:after { height:1px; margin-top:-.14em; vertical-align:middle; content:''; background:#0f0; display:inline-block}
+.legend_tit:before { width:20px; margin-right:4px}
+.legend_tit:after { width:100%; margin-left:4px}
+</style>
+<div class="legend_tit"><textarea></textarea></div>
+<div class="legend_tit">标题长长长长长长长长长长长长长长长长长长长长</div>
+
+
+
