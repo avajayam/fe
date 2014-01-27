@@ -6,18 +6,18 @@ title: line-height
 
 
 
-<a href="http://www.w3.org/TR/CSS2/visudet.html#line-height">原文 W3 line-height</a>
+<a href="http://www.w3.org/TR/CSS2/visudet.html#line-height">原文 W3 CSS2 line-height</a>
 
 
 <blockquote><strong>Containing blocks:</strong> In CSS 2.1, many box positions and sizes are calculated with respect to the edges of a rectangular box called a containing block. In general, generated boxes act as containing blocks for descendant boxes; we say that a box "establishes" the containing block for its descendants. The phrase "a box's containing block" means "the containing block in which the box lives," not the one it generates. </blockquote>
 
-<blockquote>In an <strong>inline formatting context</strong>, boxes are laid out horizontally, one after the other, beginning at the top of a containing block. The boxes may be aligned vertically in different ways: their bottoms or tops may be aligned, or the baselines of text within them may be aligned. The rectangular area that contains the boxes that form a line is called a line box.</blockquote>
+<blockquote>In an <strong>inline formatting context</strong>, boxes are laid out horizontally, one after the other, beginning at the top of a containing block. The rectangular area that contains the boxes that form a line is called a line box.</blockquote>
 
 <p>The width of a line box is determined by a containing block and the presence of floats. The height of a line box is determined by the rules given in the section on line height calculations.</p>
 
-<p>A line box is always tall enough for all of the boxes it contains. However, it may be taller than the tallest box it contains (if, for example, boxes are aligned so that baselines line up). When the height of a box B is less than the height of the line box containing it, the vertical alignment of B within the line box is determined by the 'vertical-align' property. When several inline-level boxes cannot fit horizontally within a single line box, they are distributed among two or more vertically-stacked line boxes. Thus, a paragraph is a vertical stack of line boxes. Line boxes are stacked with no vertical separation (except as specified elsewhere) and they never overlap.</p>
+<p>When the height of a box B is less than the height of the line box containing it, the vertical alignment of B within the line box is determined by the 'vertical-align' property. When several inline-level boxes cannot fit horizontally within a single line box, they are distributed among two or more vertically-stacked line boxes. Line boxes are stacked with no vertical separation (except as specified elsewhere) and they never overlap.</p>
 
-<p>In general, the left edge of a line box touches the left edge of its containing block and the right edge touches the right edge of its containing block. However, floating boxes may come between the containing block edge and the line box edge. Thus, although line boxes in the same inline formatting context generally have the same width (that of the containing block), they may vary in width if available horizontal space is reduced due to floats. Line boxes in the same inline formatting context generally vary in height (e.g., one line might contain a tall image while the others contain only text).</p>
+<p>Although line boxes in the same inline formatting context generally have the same width (that of the containing block), they may vary in width if available horizontal space is reduced due to floats.</p>
 
 <p>When the total width of the inline-level boxes on a line is less than the width of the line box containing them, their horizontal distribution within the line box is determined by the 'text-align' property. If that property has the value 'justify', the user agent may stretch spaces and words in inline boxes (but not inline-table and inline-block boxes) as well.</p>
 
@@ -33,9 +33,9 @@ title: line-height
 <p>User agents flow inline-level boxes into a vertical stack of line boxes. The height of a line box is determined as follows:</p>
 
 <ol>
-	<li>The height of each inline-level box in the line box is calculated. For replaced elements, inline-block elements, and inline-table elements, this is the height of their margin box; for inline boxes, this is their 'line-height'. </li>
-	<li>In case inline-level boxes are aligned 'top' or 'bottom', they must be aligned so as to minimize the line box height. If such boxes are tall enough, there are multiple solutions and CSS 2.1 does not define the position of the line box's baseline (i.e., the position of the strut, see below).</li>
-	<li>The line box height is the distance between the uppermost box top and the lowermost box bottom. </li>
+    <li>The height of each inline-level box in the line box is calculated. For replaced elements, inline-block elements, and inline-table elements, this is the height of their margin box; for inline boxes, this is their 'line-height'. </li>
+    <li>In case inline-level boxes are aligned 'top' or 'bottom', they must be aligned so as to minimize the line box height. If such boxes are tall enough, there are multiple solutions and CSS 2.1 does not define the position of the line box's baseline (i.e., the position of the strut, see below).</li>
+    <li>The line box height is the distance between the uppermost box top and the lowermost box bottom. </li>
 </ol>
 
 <p>Empty inline elements generate empty inline boxes, but these boxes still have margins, padding, borders and a line height.</p>
@@ -52,20 +52,20 @@ title: line-height
 
 <p>The height of the inline box encloses all glyphs and their half-leading on each side and is thus exactly 'line-height'. Boxes of child elements do not influence this height.</p>
 
-<p>Although margins, borders, and padding of non-replaced elements do not enter into the line box calculation, they are still rendered around inline boxes. This means that if the height specified by 'line-height' is less than the content height of contained boxes, backgrounds and colors of padding and borders may "bleed" into adjoining line boxes. User agents should render the boxes in document order. This will cause the borders on subsequent lines to paint over the borders and text of previous lines.</p>
+<p>Although margins, borders, and padding of non-replaced elements do not enter into the line box calculation, they are still rendered around inline boxes. This means that if the height specified by 'line-height' is less than the content height of contained boxes, backgrounds and colors of padding and borders may "bleed" into adjoining line boxes. User agents should render the boxes in document order.</p>
 
-<p>Note. CSS 2.1 does not define what the content area of an inline box is (see 10.6.1 above) and thus different UAs may draw the backgrounds and borders in different places.</p>
+<p><em>Note. CSS 2.1 does not define what the content area of an inline box is (see 10.6.1 above) and thus different UAs may draw the backgrounds and borders in different places.</em></p>
 
 <p>Use OpenType or TrueType fonts use the metrics "sTypoAscender" and "sTypoDescender" from the font's OS/2 table for A and D. In the absence of these metrics, the "Ascent" and "Descent" metrics from the HHEA table should be used.</p>
 
 'line-height'<br />
-    Value:  	normal | &lt;number&gt; | &lt;length&gt; | &lt;percentage&gt; | inherit<br />
-    Initial:  	normal<br />
-    Applies to:  	all elements<br />
-    Inherited:  	yes<br />
-    Percentages:  	refer to the font size of the element itself<br />
-    Media:  	visual<br />
-    Computed value:  	for &lt;length&gt; and &lt;percentage&gt; the absolute value; otherwise as specified<br />
+    Value:      normal | &lt;number&gt; | &lt;length&gt; | &lt;percentage&gt; | inherit<br />
+    Initial:    normal<br />
+    Applies to:     all elements<br />
+    Inherited:      yes<br />
+    Percentages:    refer to the font size of the element itself<br />
+    Media:      visual<br />
+    Computed value:     for &lt;length&gt; and &lt;percentage&gt; the absolute value; otherwise as specified<br />
 
 <p>On a block container element whose content is composed of inline-level elements, 'line-height' specifies the minimal height of line boxes within the element. The minimum height consists of a minimum height above the baseline and a minimum depth below it, exactly as if each line box starts with a zero-width inline box with the element's font and line height properties. We call that imaginary box a "strut." (The name is inspired by TeX.).</p>
 
@@ -74,7 +74,7 @@ title: line-height
 <p>On a non-replaced inline element, 'line-height' specifies the height that is used in the calculation of the line box height.</p>
 
 normal<br />
-    Tells user agents to set the used value to a "reasonable" value based on the font of the element. The value has the same meaning as <number>. We recommend a used value for 'normal' between 1.0 to 1.2. The computed value is 'normal'. <br />
+    Tells user agents to set the used value to a "reasonable" value based on the font of the element. The value has the same meaning as &lt;number&gt;. We recommend a used value for 'normal' between 1.0 to 1.2. The computed value is 'normal'. <br />
 &lt;length&gt;<br />
     The specified length is used in the calculation of the line box height. Negative values are illegal. <br />
 &lt;number&gt;<br />
@@ -87,15 +87,13 @@ normal<br />
 <p>When there is only one value of 'line-height' for all inline boxes in a block container box and they are all in the same font (and there are no replaced elements, inline-block elements, etc.), the above will ensure that baselines of successive lines are exactly 'line-height' apart. This is important when columns of text in different fonts have to be aligned, for example in a table.</p>
 
 'vertical-align'<br />
-    Value:  	baseline | sub | super | top | text-top | middle | bottom | text-bottom | &lt;percentage&gt; | &lt;length&gt; | inherit<br />
-    Initial:  	baseline<br />
-    Applies to:  	inline-level and 'table-cell' elements<br />
-    Inherited:  	no<br />
-    Percentages:  	refer to the 'line-height' of the element itself<br />
-    Media:  	visual<br />
-    Computed value:  	for &lt;percentage&gt; and &lt;length&gt; the absolute length, otherwise as specified<br />
-
-<p>This property affects the vertical positioning inside a line box of the boxes generated by an inline-level element.</p>
+    Value:      baseline | sub | super | top | text-top | middle | bottom | text-bottom | &lt;percentage&gt; | &lt;length&gt; | inherit<br />
+    Initial:    baseline<br />
+    Applies to:     inline-level and 'table-cell' elements<br />
+    Inherited:      no<br />
+    Percentages:    <em>refer to the 'line-height' of the element itself</em><br />
+    Media:      visual<br />
+    Computed value:     for &lt;percentage&gt; and &lt;length&gt; the absolute length, otherwise as specified<br />
 
 <p>Values of this property have different meanings in the context of tables. </p>
 
@@ -109,34 +107,34 @@ normal<br />
 
 <p>The following values only have meaning with respect to a parent inline element, or to the strut of a parent block container element.</p>
 
-In the following definitions, for inline non-replaced elements, the box used for alignment is the box whose height is the 'line-height' (containing the box's glyphs and the half-leading on each side, see above). For all other elements, the box used for alignment is the margin box.
+<p>In the following definitions, for inline non-replaced elements, the box used for alignment is the box whose height is the 'line-height' (containing the box's glyphs and the half-leading on each side, see above). For all other elements, the box used for alignment is the margin box.</p>
 
-baseline
-    Align the baseline of the box with the baseline of the parent box. If the box does not have a baseline, align the bottom margin edge with the parent's baseline.
-middle
-    Align the vertical midpoint of the box with the baseline of the parent box plus half the x-height of the parent.
-sub
-    Lower the baseline of the box to the proper position for subscripts of the parent's box. (This value has no effect on the font size of the element's text.)
-super
-    Raise the baseline of the box to the proper position for superscripts of the parent's box. (This value has no effect on the font size of the element's text.)
-text-top
-    Align the top of the box with the top of the parent's content area (see 10.6.1).
-text-bottom
-    Align the bottom of the box with the bottom of the parent's content area (see 10.6.1).
-<percentage>
-    Raise (positive value) or lower (negative value) the box by this distance (a percentage of the 'line-height' value). The value '0%' means the same as 'baseline'.
-<length>
-    Raise (positive value) or lower (negative value) the box by this distance. The value '0cm' means the same as 'baseline'. 
+baseline<br />
+    Align the baseline of the box with the baseline of the parent box. If the box does not have a baseline, align the bottom margin edge with the parent's baseline.<br />
+middle<br />
+    Align the vertical midpoint of the box with the baseline of the parent box plus half the x-height of the parent.<br />
+sub<br />
+    Lower the baseline of the box to the proper position for subscripts of the parent's box. (This value has no effect on the font size of the element's text.)<br />
+super<br />
+    Raise the baseline of the box to the proper position for superscripts of the parent's box. (This value has no effect on the font size of the element's text.)<br />
+text-top<br />
+    Align the top of the box with the top of the parent's content area (see 10.6.1).<br />
+text-bottom<br />
+    Align the bottom of the box with the bottom of the parent's content area (see 10.6.1).<br />
+&lt;percentage&gt;<br />
+    Raise (positive value) or lower (negative value) the box by this distance (a percentage of the 'line-height' value). The value '0%' means the same as 'baseline'.<br />
+&lt;length&gt;<br />
+    Raise (positive value) or lower (negative value) the box by this distance. The value '0cm' means the same as 'baseline'. <br />
+这个可以用来做baseline的简写，vertical-align:0。
 
-The following values align the element relative to the line box. Since the element may have children aligned relative to it (which in turn may have descendants aligned relative to them), these values use the bounds of the aligned subtree. The aligned subtree of an inline element contains that element and the aligned subtrees of all children inline elements whose computed 'vertical-align' value is not 'top' or 'bottom'. The top of the aligned subtree is the highest of the tops of the boxes in the subtree, and the bottom is analogous.
+<p>The following values align the element relative to the line box. Since the element may have children aligned relative to it (which in turn may have descendants aligned relative to them), these values use the bounds of the aligned subtree. The aligned subtree of an inline element contains that element and the aligned subtrees of all children inline elements whose computed 'vertical-align' value is not 'top' or 'bottom'. The top of the aligned subtree is the highest of the tops of the boxes in the subtree, and the bottom is analogous.</p>
 
-top
-    Align the top of the aligned subtree with the top of the line box.
-bottom
+top<br />
+    Align the top of the aligned subtree with the top of the line box.<br />
+bottom<br />
     Align the bottom of the aligned subtree with the bottom of the line box.
 
-The baseline of an 'inline-table' is the baseline of the first row of the table.
+<p><em>The baseline of an 'inline-table' is the baseline of the first row of the table.</em></p>
 
-The baseline of an 'inline-block' is the baseline of its last line box in the normal flow, unless it has either no in-flow line boxes or if its 'overflow' property has a computed value other than 'visible', in which case the baseline is the bottom margin edge.
-
+<p><em>The baseline of an 'inline-block' is the baseline of its last line box in the normal flow, unless it has either no in-flow line boxes or if its 'overflow' property has a computed value other than 'visible', in which case the baseline is the bottom margin edge.</em></p>
 
