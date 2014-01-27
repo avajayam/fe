@@ -1,0 +1,22 @@
+header,nav,dl,dt,dd,h1,h2,h3,h4,ul,ol,li,input,button,textarea,footer { margin:0; padding:0}
+img,input,button,select{ margin-top:-.14em; vertical-align:middle}
+img { border:0}
+input:focus::-moz-placeholder { color:transparent} 
+input:focus::-webkit-input-placeholder { color:transparent}
+button::-moz-focus-inner,input::-moz-focus-inner { padding:0; border:0}
+textarea { resize:vertical}
+table { border-collapse:collapse; border-spacing:0}
+input{ -webkit-user-modify:read-write-plaintext-only; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+
+
+body { font-family:'Microsoft Yahei'; background:#eee}
+
+
+em { color:#080}
+
+.a_ls { counter-reset:no}
+.a_ls a { margin:6px; padding:.5em 10px; color:#429931; line-height:1.28em; font-size:14px; text-decoration:none; background:#fff; display:inline-block}
+.a_ls a::before { content:counter(no,decimal) '. '; counter-increment:no; font-style:italic; font-size:12px; color:#777}
+.a_ls a:hover { color:#fff; background:#f90}
+
+p { -webkit-column-width:34em; -webkit-column-gap:1em; -webkit-column-rule:1px solid #ccc}
