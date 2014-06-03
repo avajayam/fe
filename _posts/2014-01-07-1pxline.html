@@ -2,21 +2,56 @@
 layout: default
 title: 1 px Line
 ---
+
+<style>
+ol { margin-right:20px}
+img { vertical-align:middle}
+div { width:320px; margin-bottom:10px}
+.pes { min-height:1px; overflow:hidden; position:absolute; bottom:0; left:0}
+.pes::before { width:200%; height:1px; content:''; background-color:#090; overflow:hidden; position:absolute; top:0; left:0;
+		-webkit-transform:scale(.5); -webkit-transform-origin:0 0; transform:scale(.5); transform-origin:0 0}
+</style>
 <h2>{{ page.title }}</h2>
 
 <h4>图片方式：</h4>
 <ol>
-	<li>默认： <img src="/fe/img/line.png" /></li>
-	<li>高1px： <img src="/fe/img/line.png" height="1" /></li>
-	<li>width:480px: <img src="/fe/img/line.png" style="width:480px"></li>
-	<li>width:200px, 高1px: <img src="/fe/img/line.png" style="width:200px; height:1px"></li>
-	<li>max-width:100%, 高1px: <img src="/fe/img/line.png" style="max-width:100%; height:1px" /></li>
-	<li>background：<div style="width:100%; height:1px; background:url(/fe/img/line.png) no-repeat; background-size:cover"></div></li>
-	<li>scale: <img src="/fe/img/line.png" style="-webkit-transform:scale(.5); transform:scale(.5)"></li>
+	<li>默认，宽640x高1 px： <img src="../img/line.png" height="1" /></li>
+	<li>宽320px 等比缩: <img src="../img/line.png" style="width:320px"></li>
+	<li>background：<div style="width:100%; height:1px; background:url(../img/line.png) no-repeat; background-size:cover"></div></li>
+	<li>transform scale: <img src="../img/line.png" style="-webkit-transform:scale(.5);  transform:scale(.5)"></li>
 </ol>
 
+<br>
 <h4>CSS方式：</h4>
-<div style="border:#00f 1px solid">1px</div>
-<div style="border:#00f thin solid">thin</div>
-<div style="height:1px; background:#0f0"></div>
+<ol>
+	<li>border 1px：<div style="border:#080 1px solid">1px</div></li>
+	<li>border thin：<div style="border:#080 thin solid">1px</div></li>
+	<li>backgroud-color：<div style="height:1px; background-color:#080"></div></li>
+	<li>backgroud-image + linear gradient：
+		<div style=" height:1px;
+		background-image:-webkit-gradient(linear, 0 0, 0 100%, from(#080), color-stop(50%, #080), color-stop(50%, transparent), to(transparent));
+		background-image:linear-gradient(#080, #080);
+		"></div>
+		<div style="
+		background-image:
+			-webkit-gradient(linear, 0 0, 0 100%, from(#080), color-stop(50%, #080), color-stop(50%, transparent), to(transparent)),
+			-webkit-gradient(linear, 0 0, 100% 0, from(transparent), color-stop(50%, transparent), color-stop(50%, #080), to(#080)),
+			-webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop(50%, transparent), color-stop(50%, #080), to(#080)),
+			-webkit-gradient(linear, 0 0, 100% 0, from(#080), color-stop(50%, #080), color-stop(50%, transparent), to(transparent));
+		background-image:
+			linear-gradient(#080, #080 50%, transparent 50%, transparent),
+			linear-gradient(90deg, transparent, transparent 50%, #080 50%, #080),
+			linear-gradient(transparent, transparent 50%, #080 50%, #080),
+			linear-gradient(90deg, #080, #080 50%, transparent 50%, transparent);
+		background-repeat:no-repeat;
+		background-position:top,right,bottom,left;
+		background-size:100% 1px, 1px 100%, 100% 1px, 1px 100%;
+		">1px</div></li>
+
+	<li>transform scale + background-color + pesudo element: <div class="pes
+		">1px</div></li>
+
+	<li>border-image：<div style="border-image:url(http://maxzhang.github.io/examples/border1px/border.png) 2 0 2 0; border-width: 1px 0">1px</div></li>
+
+</ol>
 
