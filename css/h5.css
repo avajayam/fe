@@ -34,10 +34,15 @@ table { border-collapse:collapse; border-spacing:0}
 [rowspan="1"]{ vertical-align:top}
  */
 
-input{ -webkit-user-modify:read-write-plaintext-only; -webkit-tap-highlight-color:rgba(0,0,0,0)}
+input{ -webkit-user-modify:read-write-plaintext-only; -webkit-tap-highlight-color:transparent}
 /* Android 4.0.0~4.0.4 remove input focus highlight */
 
 
+.noDrag { -webkit-user-drag:none}
+/* no dragging at all */
+
+.elDrag { -webkit-user-drag: element}
+/* drags entire element, not the text/selection */
 
 
 /*
@@ -55,9 +60,12 @@ height:100%      获取viewport高
 -webkit-tap-highlight-color:rgba(0,0,0,0)，WP8中的IE10用 <meta name="msapplication-tap-highlight" content="no"/>
 */
 
-html,button,input,select { font:16px/1.37em "Microsoft Yahei","Lucida Grande",Helvetica,Arial}
+html,button,input,select { font:16px/1.375 "Microsoft Yahei","Lucida Grande",Helvetica,Arial}
 /*
-font  根据UI设置，按目前主流手机device-width，16px字体比较适合阅读, line-height选1.375倍，字体选微软（Microsoft YaHei、Arial）和Apple（Lucida Granda、Helvetica）两大阵营的代表，Google指定字体是Arial; 设置在html上方便rem单位
+font  根据UI设置，按目前主流手机device-width，16px字体比较适合阅读；
+line-height选1.375倍，由于number的computed value和specified value一样，继承时更合理；
+字体选微软（Microsoft YaHei、Arial）和Apple（Lucida Granda、Helvetica）两大阵营的代表，Google指定字体是Arial;
+设置在html上方便rem单位
 */
 
 body {}
